@@ -1,12 +1,11 @@
 import React from 'react'
 import '../common/template/dependencies'
+import Header from '../common/template/hearder'
 
-const App = () => {
+export default props => {
   return (
     <div className='wrapper'>
-      <h1>App</h1>
+      <Header />
     </div>
   )
 }
-
-export default App

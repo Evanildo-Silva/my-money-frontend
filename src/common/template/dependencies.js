@@ -10,4 +10,4 @@ import 'modules/admin-lte/plugins/iCheck/flat/blue.css'
 import 'modules/font-awesome/css/font-awesome.min.css'
 import 'modules/ionicons/dist/css/ionicons.min.css'
 
-// import './custom.css'
+import './custom.css'
