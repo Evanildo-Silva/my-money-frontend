@@ -14,9 +14,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      modules: __dirname + '/node_module',
+      modules: __dirname + '/node_modules',
       // Alias para jquery e bootstrap pois são utilizados na construção do admimLTE
-      jquery: 'modules/admin-lte/plugins/jQuery-2.2.3.min.js',
+      jquery: 'modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js',
       bootstrap: 'modules/admin-lte/bootstrap/js/bootstrap.js'
     }
   },
