@@ -1,8 +1,9 @@
 import React from 'react'
+import '../common/template/dependencies'
 
 const App = () => {
   return (
-    <div className='Wrapper'>
+    <div className='wrapper'>
       <h1>App</h1>
     </div>
   )
