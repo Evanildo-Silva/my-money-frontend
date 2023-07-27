@@ -1,5 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default props => (
-  <h1>BillingCycles</h1>
-)
+import Content from '../common/template/content'
+import ContentHeader from '../common/template/contentHeader'
+class BillingCycle extends Component {
+
+  render() {
+    return (
+      <div>
+        <ContentHeader title='Ciclos de Pagamentos' subtitle='Cadastro' />
+        <Content>
+          Ciclos de Pagamentos
+        </Content>
+      </div>
+    )
+  }
+}
+
+export default BillingCycle
