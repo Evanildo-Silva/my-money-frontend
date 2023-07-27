@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import Tabs from '../common/tab/tabs'
+import TabsContent from '../common/tab/tabsContent'
+import TabsHeader from '../common/tab/tabsHeader'
 import Content from '../common/template/content'
 import ContentHeader from '../common/template/contentHeader'
 class BillingCycle extends Component {
@@ -9,7 +12,12 @@ class BillingCycle extends Component {
       <div>
         <ContentHeader title='Ciclos de Pagamentos' subtitle='Cadastro' />
         <Content>
-          Ciclos de Pagamentos
+          <Tabs>
+            <TabsHeader />
+            <TabsContent>
+
+            </TabsContent>
+          </Tabs>
         </Content>
       </div>
     )
