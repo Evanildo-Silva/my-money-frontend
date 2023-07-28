@@ -8,19 +8,24 @@ class TabHeader extends Component {
 
   render() {
     const selected = this.props.tab.selected === this.props.target
-    return (
-      <li className={selected ? 'active' : ''}>
-        <a
-          href='javascript:;' // iginorar o click
-          data-toggle='tab'
-          onClick={() => this.props.selectTab(this.props.target)}
-          data-target={this.props.target}
-        >
-          <i className={`fa fa-${this.props.icon}`} />
-          {` ${this.props.label}`}
-        </a>
-      </li>
-    )
+    const visible = this.props.tab.visible[this.props.target]
+    if (visible) {
+      return (
+        <li className={selected ? 'active' : ''}>
+          <a
+            href='javascript:;' // iginorar o click
+            data-toggle='tab'
+            onClick={() => this.props.selectTab(this.props.target)}
+            data-target={this.props.target}
+          >
+            <i className={`fa fa-${this.props.icon}`} />
+            {` ${this.props.label}`}
+          </a>
+        </li>
+      )
+    } else {
+      return null
+    }
   }
 }
 
