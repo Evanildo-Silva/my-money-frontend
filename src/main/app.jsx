@@ -1,6 +1,7 @@
 import React from 'react'
 import '../common/template/dependencies'
 
+import Messages from '../common/messages/messages'
 import Footer from '../common/template/footer'
 import Header from '../common/template/hearder'
 import SideBar from '../common/template/sideBar'
@@ -15,6 +16,7 @@ export default props => {
         <Routes />
       </div>
       <Footer />
+      <Messages />
     </div>
   )
 }
