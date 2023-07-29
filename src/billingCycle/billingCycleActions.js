@@ -22,6 +22,10 @@ export function update(values) {
   return submit(values, 'put')
 }
 
+export function exclude(values) {
+  return submit(values, 'delete')
+}
+
 function submit(values, method) {
   return (dispatch) => {
     const id = values._id ? values._id : ''
@@ -36,11 +40,21 @@ function submit(values, method) {
   }
 }
 
+// TODO: refatorar essas funções show...
 export function showUpdate(billingCycle) {
   // Retornar um array de actions só é possível pelo redux-multi(middleware)
   return [
     showTabs('tabUpdate'),
     selectTab('tabUpdate'),
+    initialize('billingCycleForm', billingCycle)
+  ]
+}
+
+export function showDelete(billingCycle) {
+  // Retornar um array de actions só é possível pelo redux-multi(middleware)
+  return [
+    showTabs('tabDelete'),
+    selectTab('tabDelete'),
     initialize('billingCycleForm', billingCycle)
   ]
 }
