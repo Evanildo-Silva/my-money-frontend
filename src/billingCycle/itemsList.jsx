@@ -5,15 +5,15 @@ import { Field, arrayInsert, arrayRemove } from 'redux-form'
 import Input from '../common/form/input'
 import Grid from '../common/layout/grid'
 
-class CreditList extends Component {
+class ItemsList extends Component {
 
   add(index, item = {}) {
-    this.props.arrayInsert('billingCycleForm', 'credits', index, item)
+    this.props.arrayInsert('billingCycleForm', this.props.field, index, item)
   }
 
   remove(index) {
     if (this.props.list.length > 1) {
-      this.props.arrayRemove('billingCycleForm', 'credits', index)
+      this.props.arrayRemove('billingCycleForm', this.props.field, index)
     }
   }
 
@@ -23,7 +23,7 @@ class CreditList extends Component {
       <tr key={index}>
         <td>
           <Field
-            name={`credits[${index}].name`}
+            name={`${this.props.field}[${index}].name`}
             component={Input}
             placeholder='Informe o nome'
             readOnly={this.props.readOnly}
@@ -31,12 +31,22 @@ class CreditList extends Component {
         </td>
         <td>
           <Field
-            name={`credits[${index}].value`}
+            name={`${this.props.field}[${index}].value`}
             component={Input}
             placeholder='Informe o valor'
             readOnly={this.props.readOnly}
           />
         </td>
+        {this.props.showStatus &&
+          <td>
+            <Field
+              name={`${this.props.field}[${index}].status`}
+              component={Input}
+              placeholder='Informe o status'
+              readOnly={this.props.readOnly}
+            />
+          </td>
+        }
         <td>
           <button
             type='button'
@@ -71,12 +81,15 @@ class CreditList extends Component {
     return (
       <Grid cols={this.props.cols}>
         <fieldset>
-          <legend>Créditos</legend>
+          <legend>{this.props.legend}</legend>
           <table className='table'>
             <thead>
               <tr>
                 <th>Nome</th>
                 <th>Valor</th>
+                {this.props.showStatus &&
+                  <th>Status</th>
+                }
                 <th className='table-actions'>Ações</th>
               </tr>
             </thead>
@@ -94,4 +107,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ arrayInsert, arrayRemove }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(CreditList)
+export default connect(null, mapDispatchToProps)(ItemsList)
