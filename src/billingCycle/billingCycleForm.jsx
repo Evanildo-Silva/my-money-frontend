@@ -5,12 +5,22 @@ import { Field, formValueSelector, reduxForm } from 'redux-form'
 import textField from '../common/form/textField'
 import { init } from './billingCycleActions'
 import ItemsList from './itemsList'
+import Summary from './summary.'
 
 class BillingCycleForm extends Component {
+
+  calculateSummary() {
+    const sum = (t, v) => t + v
+    return {
+      totalCredits: this.props.credits.map(item => parseFloat(item.value) || 0).reduce(sum),
+      totalDebts: this.props.debts.map(item => parseFloat(item.value) || 0).reduce(sum)
+    }
+  }
 
   render() {
     // Buscando func. detro do this.props já que possui um decoretor com o reduxForm
     const { handleSubmit, readOnly, credits, debts } = this.props
+    const { totalCredits, totalDebts } = this.calculateSummary()
 
     return (
       <form role="form" onSubmit={handleSubmit}>
@@ -41,6 +51,7 @@ class BillingCycleForm extends Component {
             readOnly={readOnly}
             cols='12 4'
           />
+          <Summary credit={totalCredits} debt={totalDebts} />
           <ItemsList
             cols='12 6'
             list={credits}
