@@ -18,7 +18,7 @@ class BillingCycleList extends Component {
           <td>{itemList.month}</td>
           <td>{itemList.year}</td>
           <td>
-            // TODO refatorar esses botões.
+            {/* TODO refatorar esses botões. */}
             <button
               className='btn btn-warning'
               onClick={() => this.props.showUpdate(itemList)}
@@ -44,7 +44,7 @@ class BillingCycleList extends Component {
               <th>Nome</th>
               <th>Mês</th>
               <th>Ano</th>
-              <th>Ações</th>
+              <th className='table-actions'>Ações</th>
             </tr>
           </thead>
           <tbody>
