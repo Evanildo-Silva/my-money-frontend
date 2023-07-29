@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Field, reduxForm } from 'redux-form'
+import { Field, formValueSelector, reduxForm } from 'redux-form'
 import textField from '../common/form/textField'
 import { init } from './billingCycleActions'
+import CreditList from './creditList'
 
 class BillingCycleForm extends Component {
 
   render() {
     // Buscando func. detro do this.props já que possui um decoretor com o reduxForm
-    const { handleSubmit, readOnly } = this.props
+    const { handleSubmit, readOnly, credits } = this.props
 
     return (
       <form role="form" onSubmit={handleSubmit}>
@@ -40,6 +41,7 @@ class BillingCycleForm extends Component {
             readOnly={readOnly}
             cols='12 4'
           />
+          <CreditList cols='12 6' list={credits} readOnly={readOnly} />
         </div>
         <div className='box-footer'>
           <button
@@ -62,9 +64,16 @@ class BillingCycleForm extends Component {
 }
 
 BillingCycleForm = reduxForm({ form: 'billingCycleForm', destroyOnUnmount: false })(BillingCycleForm)
+const selector = formValueSelector('billingCycleForm')
+
+function mapStateToProps(state) {
+  return {
+    credits: selector(state, 'credits')
+  }
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ init }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(BillingCycleForm)
+export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm)
