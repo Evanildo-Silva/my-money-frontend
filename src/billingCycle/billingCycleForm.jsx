@@ -9,7 +9,7 @@ class BillingCycleForm extends Component {
 
   render() {
     // Buscando func. detro do this.props já que possui um decoretor com o reduxForm
-    const { handleSubmit } = this.props
+    const { handleSubmit, readOnly } = this.props
 
     return (
       <form role="form" onSubmit={handleSubmit}>
@@ -19,6 +19,7 @@ class BillingCycleForm extends Component {
             component={textField}
             label='Nome'
             placeholder='Informe um nome'
+            readOnly={readOnly}
             cols='12 4'
           />
           <Field
@@ -27,6 +28,7 @@ class BillingCycleForm extends Component {
             type='number'
             label='Mês'
             placeholder='Informe o mês'
+            readOnly={readOnly}
             cols='12 4'
           />
           <Field
@@ -35,6 +37,7 @@ class BillingCycleForm extends Component {
             type='number'
             label='Ano'
             placeholder='Informe o ano'
+            readOnly={readOnly}
             cols='12 4'
           />
         </div>
