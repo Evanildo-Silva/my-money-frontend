@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 import Input from '../common/form/inputAuth'
 import Grid from '../common/layout/grid'
 import Row from '../common/layout/row'
-import Messages from '../common/msg/messages'
+import Messages from '../common/messages/messages'
 import './auth.css'
 import { login, signup } from './authActions'
 class Auth extends Component {
